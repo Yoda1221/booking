@@ -1,7 +1,6 @@
 const jwt           = require('jsonwebtoken')
 const asyncHandler  = require('express-async-handler')
 const { redirect } = require('express/lib/response')
-//const User = require('../models/userModel')
 
 const ifUserLogged = asyncHandler(async (req, res, next) => {
     const token = req.cookies.Booking
@@ -11,7 +10,6 @@ const ifUserLogged = asyncHandler(async (req, res, next) => {
                 console.log('JWT VRIFY ERROR ', err)
                 redirect('/')
             } else {
-                console.log('DT ', decodecToken)
                 res.id = decodecToken.id
                 next()
             }
@@ -19,8 +17,7 @@ const ifUserLogged = asyncHandler(async (req, res, next) => {
     } else {
         res.redirect('/')
     }
-
-    next()
+    
 })
 
 module.exports = { ifUserLogged }

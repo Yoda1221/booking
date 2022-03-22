@@ -38,7 +38,7 @@ const queryDataFromBd = asyncHandler(async (query) => {
  *  @param { String }
  *  @param { Object }
  */
-const saveDataToBd = asyncHandler(async (query, params) => {
+const saveDataToBd = asyncHandler( async (query, params) => {
     const message = new Promise( async (resolve, reject) => {
         await mysqlConn.query(query, params, (err, result) => {
             if (err) return reject(err)

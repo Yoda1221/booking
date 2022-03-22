@@ -7,7 +7,6 @@ const bookingController = require('../controllers/bookingController')
 router.get('/',                 bookingController.home)
 
 //* AUTH
-router.get('/userdata',         authController.userdata)
 router.get('/logout',           authController.logout)
 router.post('/login',           authController.login)
 router.post('/signup',          authController.signup)

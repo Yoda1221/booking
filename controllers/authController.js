@@ -37,6 +37,7 @@ module.exports = {
         const query = `SELECT id, name, email, password FROM users WHERE email = "${email}" `
         const user  = await services.queryDataFromBd(query)
         if (user && (await bcrypt.compare(password, user[0].password))) {
+            //  TODO SAVE USER TO DB
             res.status(200).json({
               id: user[0].id,
               name: user[0].name,
@@ -58,15 +59,6 @@ module.exports = {
         res.cookie(process.env.COOKIENAME, '', { expires: new Date(Date.now() -1 )})
         res.status(204).redirect('/')
     },
-    /**
-     ** GET USER DATA
-     *
-     * @Route   POST /userdata   
-     * @param { Object } req 
-     * @param { Object } res 
-     */
-    userdata: asyncHandler(async (req, res) => {
-        res.status(200).json({ message: "HOME"})
-    })
+
 
 }
